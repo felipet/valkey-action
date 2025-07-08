@@ -1,0 +1,21 @@
+name: 'Valkey DB Server'
+description: 'Start a containered Valkey DB server'
+author: 'felipet'
+inputs:
+  host port:
+    description: 'Port to connect to the DB sever - host side'
+    required: false
+    default: 6379
+  container port:
+    description: 'Listening port for the DB server - container side'
+    reqired: false
+    default: 6379
+  valkey version:
+    description: 'Version of the Valkey server'
+    required: false
+    default: 'latest'
+  runs:
+    using: 'docker'
+    image: 'Dockerfile'
+  
+
