@@ -19,14 +19,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install redis-cli
-        run: sudo apt install redis-tools
+        run: sudo apt install -y redis-tools
       - name: Deploy Valkey ${{ matrix.valkey-version }}
         uses: ./
         with:
-          host port: 6379
+          host port: ${{ matrix.host-port }}
       - name: Test
         run: |
-          pong=$(redis-cli -p $HOST_PORT ping)
+          pong=$(redis-cli -p $MATRIX_HOST_PORT ping)
           if [ "$pong" != "pong" ]; then
             echo "Test command failed. Check that the container is running"
             exit 1
