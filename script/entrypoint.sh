@@ -4,7 +4,7 @@ set -euo pipefail
 
 binary="docker"
 
-cmd_run="$binary run -d -p $INPUT_HOST_PORT:$INPUT_CONTAINER_PORT docker.io/valkey/valkey:$VALKEY_VERSION"
+cmd_run="$binary run -d -p $INPUT_HOST_PORT:$INPUT_CONTAINER_PORT docker.io/valkey/valkey:$INPUT_VALKEY_VERSION"
 
 CONTAINER_NAME=$(eval "$cmd_run")
 
