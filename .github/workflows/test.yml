@@ -1,0 +1,34 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        valkey-version:
+          - "latest"
+          - "alpine"
+          - "bookworm"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install redis-cli
+        run: sudo apt install redis-tools
+      - name: Deploy Valkey ${{ matrix.valkey-version }}
+        uses: ./
+        with:
+          host port: 6379
+      - name: Test
+        run: |
+          pong=$(redis-cli -p $HOST_PORT ping)
+          if [ "$pong" != "pong" ]; then
+            echo "Test command failed. Check that the container is running"
+            exit 1
+          fi
+      
