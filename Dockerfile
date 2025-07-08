@@ -1,5 +1,5 @@
 FROM docker:stable
 
-COPY script/.sh /.sh
-RUN chmod +x /.sh
-ENTRYPOINT ["/.sh"]
+COPY script/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
