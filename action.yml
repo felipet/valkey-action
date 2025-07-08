@@ -1,6 +1,9 @@
 name: 'Valkey DB Server'
 description: 'Start a containered Valkey DB server'
 author: 'felipet'
+branding:
+  icon: 'database'
+  color: 'purple'
 inputs:
   host port:
     description: 'Port to connect to the DB sever - host side'
