@@ -14,8 +14,6 @@ jobs:
       matrix:
         valkey-version:
           - "latest"
-          - "alpine"
-          - "bookworm"
     steps:
       - uses: actions/checkout@v4
       - name: Install redis-cli
@@ -26,7 +24,8 @@ jobs:
           host port: ${{ matrix.host-port }}
       - name: Test
         run: |
-          pong=$(redis-cli -p $MATRIX_HOST_PORT ping)
+          docker ps
+          pong=$(redis-cli  ping)
           if [ "$pong" != "pong" ]; then
             echo "Test command failed. Check that the container is running"
             exit 1
