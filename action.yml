@@ -17,9 +17,6 @@ inputs:
     description: 'Version of the Valkey server'
     required: false
     default: 'latest'
-  runs:
-    using: 'docker'
-    image: 'Dockerfile'
 runs:
   using: 'docker'
   image: 'Dockerfile'  
