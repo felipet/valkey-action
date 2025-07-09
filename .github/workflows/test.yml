@@ -24,9 +24,8 @@ jobs:
           host port: ${{ matrix.host-port }}
       - name: Test
         run: |
-          docker ps
           pong=$(redis-cli  ping)
-          if [ "$pong" != "pong" ]; then
+          if [ "$pong" != "PONG" ]; then
             echo "Test command failed. Check that the container is running"
             exit 1
           fi
