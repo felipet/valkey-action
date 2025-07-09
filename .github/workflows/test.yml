@@ -23,7 +23,8 @@ jobs:
       - name: Deploy Valkey ${{ matrix.valkey-version }}
         uses: ./
         with:
-          host port: ${{ matrix.host-port }}
+          host port: 6379
+          container port: 6379
       - name: Test
         run: |
           pong=$(redis-cli  ping)
